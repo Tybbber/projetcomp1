@@ -9,4 +9,4 @@ struct element
 typedef element* llist;
 
 llist addVar(llist liste, int valeur, char* variable);
-llist getValue(llist liste, char* variable);
+int getValue(llist liste, char* variable);

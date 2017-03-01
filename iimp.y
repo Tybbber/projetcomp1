@@ -40,15 +40,17 @@ E : I Pl  T           { $$ = $1 + $3; }
   ;
 
 T : T Mu  F           { $$ = $1 * $3; }
+  | V Mu  F           { $$ = $1 * $3; }
   | F                 { $$ = $1; }
   ;
 
 F : '(' E ')'         { $$ = $2; }
   | I                 { $$ = $1; }
+  | V                 { $$ = getValue(Variables, $1);}
 
   ;
 
-C : V Af E            { addVar(Variables, $3, $1); }
+C : V Af E            { addVar(Variables, $3, $1);  }
   | Sk                { ; }
   | '(' C ')'         { $$ = $2; }
   | If E Th C El C    { if($2) $$ = $4; else $$ = $6; }

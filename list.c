@@ -1,5 +1,8 @@
 #include <stdlib.h>
-#include list.h
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+#include "list.h"
 
 
 llist addVar(llist liste, int valeur, char* variable)
@@ -25,12 +28,13 @@ llist addVar(llist liste, int valeur, char* variable)
   }
 }
 
-llist getValue(llist liste, char* variable)
+int getValue(llist liste, char* variable)
 {
   element* temp=liste;
   while (temp->nxt !=NULL)
   {
-    if (variable == temp->var) {
+    if (strcmp(variable, temp->var)) {
+      int a;
       return temp->val;
     }
     temp = temp->nxt;
